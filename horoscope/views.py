@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 
 def get_test(request):
-    with open('/home/dima/PycharmProjects/DjangoArtem/my_page/horoscope/templates/index.html') as f:
+    with open('horoscope/templates/horoscope/index.html') as f:
         file = f.read()
     return render(request, file)
 
