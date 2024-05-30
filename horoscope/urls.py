@@ -1,6 +1,8 @@
 from django.urls import path
-from . import views
+from .views import get_sign_zodiac, get_test
 
 urlpatterns = [
-    path('<sign_zodiac>/', views.get_sign_zodiac),
+    path('test/', get_test),
+    path('<sign_zodiac>/', get_sign_zodiac),
+
 ]
