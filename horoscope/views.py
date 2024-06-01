@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 
 def get_test(request):
-    return render(request, 'horoscope/index.html')
+    return render(request, 'index.html')
 
 
 def get_sign_zodiac(request, sign_zodiac):
