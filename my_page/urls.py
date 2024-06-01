@@ -16,10 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from week_days import views as views_week_days
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('horoscope/', include('horoscope.urls')),
-    path('todo_week/', include('week_days.urls'))
+    path('todo_week/', include('week_days.urls')),
+    path('calculate_geometry/', include('geometry.urls')),
 ]

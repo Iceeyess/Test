@@ -2,5 +2,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('<day>/', views.get_day),
+    path('<int:day>/', views.get_day_by_numbers),
+    path('<str:day>/', views.get_day),
 ]
