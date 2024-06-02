@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns = [
     path('<int:day>/', views.get_day_by_numbers),
-    path('<str:day>/', views.get_day),
+    path('<str:day>/', views.get_day, name='todo-url-name'),
 ]

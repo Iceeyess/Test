@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.urls import reverse
 # Create your views here.
 
 d_dict = {
@@ -22,9 +23,10 @@ def get_day(request: str, day: str) -> HttpResponse:
 
 def get_day_by_numbers(request: str, day: int) -> HttpResponse:
     day_list = list(d_dict)
-    if 1 <= day <=len(day_list):
+    if 1 <= day <= len(day_list):
         result = day_list[day - 1]
-        return HttpResponseRedirect(f"/todo_week/{result}")
+        url_route = reverse('todo-url-name', args=(result,))
+        return HttpResponseRedirect(url_route)
     return HttpResponseNotFound(f"Неверный номер дня - {day}")
 
 

@@ -19,12 +19,15 @@ def get_circle_area(request, radius) -> HttpResponse:
 
 #  GEOMETRY_ROOT = 'calculate_geometry/'
 def get_redirect_rectangle_area(request, length, width) -> HttpResponse:
-    return HttpResponseRedirect(f"/{GEOMETRY_ROOT}rectangle/{length}/{width}/")
+    url_route = reverse('rectangle-url', args=(length, width))
+    return HttpResponseRedirect(url_route)
 
 
 def get_redirect_square_area(request, length) -> HttpResponse:
-    return HttpResponseRedirect(f"/{GEOMETRY_ROOT}square/{length}")
+    url_route = reverse('square-url', args=(length, ))
+    return HttpResponseRedirect(url_route)
 
 
 def get_redirect_circle_area(request, radius) -> HttpResponse:
-    return HttpResponseRedirect(f"/{GEOMETRY_ROOT}circle/{radius}/")
+    url_route = reverse('circle-url', args=(radius, ))
+    return HttpResponseRedirect(url_route)
