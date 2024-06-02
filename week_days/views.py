@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 # Create your views here.
 
 d_dict = {
@@ -14,15 +14,18 @@ d_dict = {
 
 
 def get_day(request: str, day: str) -> HttpResponse:
-    return HttpResponse(d_dict.get(day, 'День не определен!'))
+    day_list = list(d_dict)
+    if day not in day_list:
+        return HttpResponse(d_dict.get(day, 'День не определен!'))
+    return HttpResponse(f"Сегодня {day} день недели")
 
 
 def get_day_by_numbers(request: str, day: int) -> HttpResponse:
-    day_list = list(d_dict.keys())
-    try:
+    day_list = list(d_dict)
+    if 1 <= day <=len(day_list):
         result = day_list[day - 1]
-    except IndexError:
-        return HttpResponseNotFound(f"Неверный номер дня - {day}")
-    else:
-        return HttpResponse(f"Сегодня {day} день недели")
+        return HttpResponseRedirect(f"/todo_week/{result}")
+    return HttpResponseNotFound(f"Неверный номер дня - {day}")
+
+
 
